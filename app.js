@@ -22,5 +22,5 @@ app.get("/", async (req, res) => {
 });
 
 app.listen(8000, () => {
-  console.log("Listening to 8000 port");
+  console.log("Listening to 8000 port.");
 });
