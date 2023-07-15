@@ -9,6 +9,19 @@
   <h1>Crud Operation</h1>
   {{message}}
   <br>
+  {{#if edit_id}}
+  <h3>Edit</h3>
+  <form action="/update_book/{{edit_id}}" method="post">
+    <label for="">Title</label>
+    <input type="text" name="title" value="{{edit_book.title}}">
+    <br> <br>
+     <label for="">Author</label>
+    <input type="text" name="author" value="{{edit_book.author}}"> <br> <br>
+    <input type="submit">
+  </form>
+
+  {{else}}
+
   <h3>Create</h3>
   <form action="/store_book" method="post">
     <label for="">Title</label>
@@ -17,7 +30,10 @@
      <label for="">Author</label>
     <input type="text" name="author"> <br> <br>
     <input type="submit">
-  </form>
+  </form> <br> <br>
+
+{{/if}}
+  
   <ul>
     {{#each employees}}
     <li>{{this.title}} - {{this.author}}</li>
