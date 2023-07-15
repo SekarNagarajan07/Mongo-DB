@@ -21,6 +21,11 @@ app.get("/", async (req, res) => {
   res.render("main", { message, employees });
 });
 
+app.post("./store_book", async (req, res) => {
+  let database = await dbo.getDatabase();
+  const collection = database.collection("books");
+});
+
 app.listen(8000, () => {
   console.log("Listening to 8000 port.");
 });
