@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const bodyparser = require("body-parser");
 const exhbs = require("express-handlebars");
-const dbo = require("/db");
+const dbo = require("./db");
 
 app.engine(
   "hbs",
@@ -17,7 +17,7 @@ app.get("/", async (req, res) => {
   const collection = database.collection("books");
   const cursor = collection.find({});
   let employees = cursor.toArray();
-  let message = "test";
+  let message = "";
   res.render("main", { message, employees });
 });
 
