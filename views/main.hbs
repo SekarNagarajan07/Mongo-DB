@@ -8,7 +8,16 @@
 <body>
   <h1>Crud Operation</h1>
   {{message}}
-
+  <br>
+  <h3>Create</h3>
+  <form action="/store_book" method="post">
+    <label for="">Title</label>
+    <input type="text" name="title">
+    <br> <br>
+     <label for="">Author</label>
+    <input type="text" name="author"> <br> <br>
+    <input type="submit">
+  </form>
   <ul>
     {{#each employees}}
     <li>{{this.title}} - {{this.author}}</li>
