@@ -16,7 +16,7 @@ app.get("/", async (req, res) => {
   let database = await dbo.getDatabase();
   const collection = database.collection("books");
   const cursor = collection.find({});
-  let employees = cursor.toArray();
+  let employees = await cursor.toArray();
   let message = "";
   res.render("main", { message, employees });
 });
