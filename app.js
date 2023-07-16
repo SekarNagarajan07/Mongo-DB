@@ -17,8 +17,14 @@ app.get("/", async (req, res) => {
   let database = await dbo.getDatabase();
   const collection = database.collection("books");
   const cursor = collection.find({});
-  let employees = await cursor.toArray();
+  let books = await cursor.toArray();
   let message = "";
+  let edit_id, edit_book;
+
+  if (req.query.edit_id) {
+    edit_id = req.query.edit_id;
+    edit_book = await collection.findOne({ _id: edit_id });
+  }
 
   switch (req.query.status) {
     case "1":
@@ -28,7 +34,7 @@ app.get("/", async (req, res) => {
     default:
       break;
   }
-  res.render("main", { message, employees });
+  res.render("main", { message, books, edit_id, edit_book });
 });
 
 app.post("/store_book", async (req, res) => {
